@@ -3,8 +3,10 @@ import cors from 'cors'
 import productRouter from './routes/product.routes.js';
 import connetDb from './db/conn.js';
 const app = express()
+import 'dotenv/config'
 const port = process.env.PORT || 4343
 
+console.log("port", port);
 
 
 app.use(express.urlencoded({ extended: true }));

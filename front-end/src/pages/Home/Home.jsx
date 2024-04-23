@@ -35,7 +35,7 @@ const Home = () => {
       <Hero />
 
       {/* phone products  */}
-      <section className="lg:py-24 md:py-24 flex py-16 justify-center px-8">
+      <section className="lg:py-24 md:py-24 flex justify-center px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-3">
           {phoneData.slice(0, 5).map((item) => (
             <Card key={item._id} item={item} />
@@ -47,7 +47,7 @@ const Home = () => {
       <Offers />
 
       {/* earphones  */}
-      <section className=" lg:py-24 md:py-24 flex py-16 justify-center px-8">
+      <section className=" lg:py-24 md:py-24 flex py-4 justify-center px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-3">
           {earPhones.slice(0, 5).map((item) => (
             <Card key={item._id} item={item} />

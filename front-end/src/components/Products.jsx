@@ -6,7 +6,7 @@ const Products = () => {
 
   const getProducts = async () => {
     try {
-      const request = await fetch('http://localhost:4646/api/v1/products', {
+      const request = await fetch('http://localhost:4343/api/v1/products', {
         headers: {
           // authorization : JSON.parse(localStorage.getItem('token'))
           // jwt token ends

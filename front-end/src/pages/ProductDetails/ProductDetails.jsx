@@ -37,6 +37,7 @@ const ProductDetails = () => {
   useEffect(() => {
     getSingleProduct()
     getAllProducts()
+    window.scrollTo(0, 0)
   }, [])
   return (
     <section>

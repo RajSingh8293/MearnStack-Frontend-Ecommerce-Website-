@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, json, useNavigate } from 'react-router-dom'
 import img from '../assets/logo.png'
 
 const Nav = () => {
   const auth = localStorage.getItem('user')
   const navigate = useNavigate()
-  // console.log(auth);
+  const cartItems = JSON.parse(localStorage.getItem('cartItems'))
+  console.log(cartItems)
   const logout = () => {
     localStorage.clear()
     navigate('/signup')
@@ -26,6 +27,9 @@ const Nav = () => {
 
           <li className="text-white">
             <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li className="text-white">
+            <Link to="/cart">Cart {cartItems.length}</Link>
           </li>
 
           {auth ? (

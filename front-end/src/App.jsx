@@ -16,6 +16,7 @@ import Dashboard from './pages/Admin/Dashboard'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Cart from './pages/Cart/Cart'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/update/:id" element={<Update />} />
           <Route path="/logout" element={<h1>Logout</h1>} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
           {/* </Route> */}
 
           <Route path="/register" element={<Register />} />

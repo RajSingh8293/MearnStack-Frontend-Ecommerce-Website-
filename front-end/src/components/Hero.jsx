@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Hero = () => {
-  const [activeImage, setImage] = useState(0)
+  const [activeImage, setActiveImage] = useState(0)
   const images = [
     {
       id: 1,
@@ -20,13 +20,13 @@ const Hero = () => {
     },
   ]
   const nextSlide = () => {
-    setImage(activeImage === images.length - 1 ? 0 : activeImage + 1)
+    setActiveImage(activeImage === images.length - 1 ? 0 : activeImage + 1)
   }
   const prevSlide = () => {
-    setImage(activeImage === 0 ? images.length - 1 : activeImage - 1)
+    setActiveImage(activeImage === 0 ? images.length - 1 : activeImage - 1)
   }
   return (
-    <section className=" w-[100%] relative h-[500px] overflow-hidden">
+    <section className=" w-[100%] relative lg:h-[500px] overflow-hidden">
       <div className="ml-5 left-0 sm:top-52 absolute bg-white p-2 rounded-full">
         <p onClick={nextSlide}>
           <svg

@@ -10,6 +10,8 @@ const Register = () => {
   const RegisterUser = (e) => {
     e.preventDefault()
     console.log(username, email, password)
+    localStorage.setItem('user', JSON.stringify({ username, email, password }))
+    navigate('/')
   }
 
   return (

@@ -53,6 +53,10 @@ const cartSlice = createSlice({
       }
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
+    clearCartItems: (state, action) => {
+      state.cartItems = []
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+    },
     shippingReducer: (state, action) => {
       state.shippingInfo = action.payload
       sessionStorage.setItem('shippingInfo', JSON.stringify(state.shippingInfo))
@@ -66,6 +70,7 @@ const cartSlice = createSlice({
 export const {
   addToCart,
   removeToCart,
+  clearCartItems,
   incrementQuantity,
   decrementQuantity,
   shippingReducer,

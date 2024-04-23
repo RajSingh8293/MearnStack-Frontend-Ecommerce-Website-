@@ -100,7 +100,7 @@ export default function Shop() {
   }, [])
 
   return (
-    <div className="bg-white">
+    <div className="bg-white lg:pt-[0] pt-[70px]">
       <section className="">
         <div className="bg-[url('https://i.imgur.com/jAXaawT.jpg')] h-screen bg-cover bg-center flex justify-items-center items-center">
           <div className="px-10 lg:px-32 xl:px-40">

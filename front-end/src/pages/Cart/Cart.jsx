@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
+  clearCartItems,
   decrementQuantity,
   incrementQuantity,
   removeToCart,
 } from '../../redux/slices/cartSlice'
+import { MdOutlineRemoveShoppingCart } from 'react-icons/md'
+import { IoIosRemove } from 'react-icons/io'
+import { IoIosAdd } from 'react-icons/io'
 
 const Cart = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const cartItems = JSON.parse(localStorage.getItem('cartItems'))
+  // const cartItems = JSON.parse(localStorage.getItem('cartItems'))
+  const { cartItems } = useSelector((state) => state.cart)
 
   console.log(cartItems)
 
@@ -22,33 +27,35 @@ const Cart = () => {
   const shipping = totalPrice > 100 ? 0 : 5
 
   const checkoutHandler = () => {
-    if (user) {
-      navigate('/checkout')
-    } else {
-      navigate('/signin')
-    }
-    // navigate('/signin?redirect=checkout')
+    navigate('/checkout')
+    // if (user) {
+    //   navigate('/checkout')
+    // } else {
+    //   navigate('/login')
+    // }
   }
 
   return (
-    <section>
-      {cartItems.length > 0 ? (
-        <div className="min-h-[80vh] bg-gray-100 py-20">
-          <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
+    <section className="min-h-[100vh] bg-gray-100 py-24">
+      {cartItems && cartItems.length > 0 ? (
+        <div className=" ">
+          <h1 className="py-5 text-center text-2xl font-bold">Cart Items</h1>
 
-          <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-            <div className="rounded-lg md:w-2/3">
+          <div className="mx-auto max-w-5xl lg:flex md:flex justify-center px-6  md:space-x-6 xl:px-0">
+            <div className="rounded-lg ">
               {cartItems &&
                 cartItems.map((data) => (
                   <div
                     key={data._id}
-                    className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+                    className="justify-between  mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
                   >
-                    <img
-                      src={data.image}
-                      alt="product-image"
-                      className="w-full rounded-lg sm:w-40"
-                    />
+                    <div className="w-[200px]">
+                      <img
+                        src={data.image}
+                        alt="product-image"
+                        className="h-[100px] rounded-lg "
+                      />
+                    </div>
                     <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                       <div className="mt-5 sm:mt-0">
                         <h2 className="text-lg font-bold text-gray-900">
@@ -71,7 +78,7 @@ const Cart = () => {
                                 data-input-counter-decrement="counter-input"
                                 className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
                               >
-                                -{/* <RemoveCircleOutlineIcon /> */}
+                                <IoIosRemove />
                               </button>
 
                               <span className="px-3 flex-shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[3.5rem] text-center">
@@ -86,7 +93,7 @@ const Cart = () => {
                                 data-input-counter-increment="counter-input"
                                 className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
                               >
-                                +{/* <ControlPointIcon /> */}
+                                <IoIosAdd />
                               </button>
                             </div>
                           </form>
@@ -116,7 +123,7 @@ const Cart = () => {
                 ))}
             </div>
             {/* <!-- Sub total --> */}
-            <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+            <div className="mt-6 w-[100%] lg:w-[70%]  h-full rounded-lg border bg-white p-6 shadow-md md:mt-0">
               <div className="mb-2 flex justify-between">
                 <p className="text-gray-700">Subtotal</p>
                 <p className="text-gray-700">$ {totalPrice}</p>
@@ -146,7 +153,7 @@ const Cart = () => {
               </button>
               <button
                 className="mt-6 w-full rounded-md bg-red-800 py-1.5 font-medium text-blue-50 hover:bg-[#424242]"
-                // onClick={() => dispatch(clearCartItems())}
+                onClick={() => dispatch(clearCartItems())}
               >
                 Clear Cart
               </button>
@@ -157,7 +164,7 @@ const Cart = () => {
         <div className=" min-h-[80vh]  flex flex-col gap-5 justify-center items-center">
           <h1 className=" text-3xl font-semibold text-black">Empty Cart</h1>
           <p className="">
-            {/* <RemoveShoppingCartOutlinedIcon className="text-3xl" /> */}
+            <MdOutlineRemoveShoppingCart className="text-3xl" />
           </p>
           <NavLink to="/shop">
             <button className="w-[300px] text-white font-semibold bg-gray-600 border py-2">

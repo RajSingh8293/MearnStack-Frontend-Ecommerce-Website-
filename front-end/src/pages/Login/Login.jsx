@@ -9,6 +9,8 @@ const Login = () => {
   const LoginUser = (e) => {
     e.preventDefault()
     console.log(email, password)
+    localStorage.setItem('user', JSON.stringify({ email, password }))
+    navigate('/')
   }
 
   return (

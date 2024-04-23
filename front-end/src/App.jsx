@@ -17,6 +17,11 @@ import ProductDetails from './pages/ProductDetails/ProductDetails'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Cart from './pages/Cart/Cart'
+import Checkout from './pages/Checkout/Checkout'
+import ConfirmOrder from './pages/ConfirmOrder/ConfirmOrder'
+import Payment from './pages/Payment/Payment'
+import AdminRoute from './protectedroutes/AdminRoute'
+import NoPage from './pages/NoPage/NoPage'
 
 function App() {
   return (
@@ -25,22 +30,31 @@ function App() {
         <Nav />
         <ToastContainer />
         <Routes>
-          {/* we use private component because we want to keep private beacuse we don't want to show these pages without signup or login */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product-details/:id" element={<ProductDetails />} />
-          <Route path="/" element={<Home />} />
           {/* <Route element={<PrivateComponent />}> */}
-          <Route path="/add" element={<Add />} />
           <Route path="/add" element={<Add />} />
           <Route path="/update/:id" element={<Update />} />
           <Route path="/logout" element={<h1>Logout</h1>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/confirm-order" element={<ConfirmOrder />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="*" element={<NoPage />} />
           {/* </Route> */}
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+
+          <Route
+            element={
+              <AdminRoute>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </AdminRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
 

@@ -4,7 +4,7 @@ import Products from '../../components/Products'
 
 const Dashboard = () => {
   return (
-    <div className="flex gap-5">
+    <div className="px-8 w-[100%] flex lg:pt-[80px] pt-[100px] bg-white overflow-x-auto">
       <Sidebar />
       <Products />
     </div>

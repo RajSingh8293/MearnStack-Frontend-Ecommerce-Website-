@@ -30,7 +30,7 @@ const Home = () => {
   }, [])
 
   return (
-    <section className="">
+    <section className="pt-[70px]">
       {/* hero  */}
       <Hero />
 

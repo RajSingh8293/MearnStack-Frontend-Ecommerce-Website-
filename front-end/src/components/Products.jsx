@@ -96,7 +96,7 @@ const Products = () => {
   }, [])
   return (
     <>
-      <section className="w-[100%] lg:w-[80%] lg:flex lg:flex-col lg:justify-center lg:tems-center">
+      <section className="  w-[100%] lg:w-[80%] lg:flex lg:flex-col lg:justify-center lg:tems-center">
         <div className="w-[100%] flex flex-col justify-center items-center gap-5 px-8 py-5">
           <h1 className="text-3xl font-bold"> All Products</h1>
           <div className=" w-[80%]  search border bg-red-400">
